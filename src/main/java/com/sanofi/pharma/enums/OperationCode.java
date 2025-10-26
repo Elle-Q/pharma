@@ -1,0 +1,8 @@
+package com.sanofi.pharma.enums;
+
+public enum OperationCode {
+    PRESCRIPTION_SUBMIT_FAIL,
+    PRESCRIPTION_SUBMIT_SUCCESS,
+    PRESCRIPTION_FULFILL_FAIL,
+    PRESCRIPTION_FULFILL_SUCCESS;
+}
