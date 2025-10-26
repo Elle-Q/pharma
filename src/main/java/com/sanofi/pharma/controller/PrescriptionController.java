@@ -28,7 +28,7 @@ public class PrescriptionController {
     public PharmaResponse<?> submit(@Valid @RequestBody PrescriptionSubmitRequest request) {
         PrescriptionActionResult result = prescriptionProcessService.submit(request);
         if (result.isSuccess()) {
-            return PharmaResponse.ok();
+            return PharmaResponse.ok(result.getData());
         } else {
             return PharmaResponse.fail(result.getFailureReasons());
         }

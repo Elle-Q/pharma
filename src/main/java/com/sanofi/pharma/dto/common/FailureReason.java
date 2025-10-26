@@ -7,6 +7,7 @@ import com.sanofi.pharma.enums.FailureCode;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.text.MessageFormat;
 import java.util.HashMap;
 
 /**
@@ -32,7 +33,7 @@ public class FailureReason {
     }
 
     public static FailureReason fail0(FailureCode failureCode, Object... args) {
-        return new FailureReason(failureCode.getCode(), String.format(failureCode.getMessage(), args));
+        return new FailureReason(failureCode.getCode(), MessageFormat.format(failureCode.getMessage(), args));
     }
 
 

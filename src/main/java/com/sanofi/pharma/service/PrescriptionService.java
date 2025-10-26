@@ -34,23 +34,24 @@ public class PrescriptionService {
 
     private final ContractService contractService;
 
-    @Transactional(noRollbackFor = OptimisticLockException.class, propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public void fulfillPrescription(PrescriptionDetail prescriptionDetail, ValidationContext context) {
+
         List<PrescriptionItem> items = prescriptionDetail.getItems();
         Prescription prescription = prescriptionDetail.getPrescription();
 
-        //deduct stoke - drug
+        //step1: deduct stoke - drug
         drugService.deductStockWithVersion(items, context);
 
-        //update contract
+        //step2: update contract
         contractService.updateUsageAmountWithVersion(items, prescription.getPharmacyId(), context);
 
-        //update prescription status
+        //step3: update prescription status
         updatePrescriptionWithVersion(prescription);
     }
 
 
-    @Transactional(noRollbackFor = OptimisticLockException.class, propagation = Propagation.REQUIRES_NEW)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
     public void submitPrescription(PrescriptionDetail prescriptionDetail) {
         Prescription prescription = prescriptionDetail.getPrescription();
         updateForSubmit(prescription);

@@ -15,10 +15,17 @@ public class PrescriptionActionResult {
 
     private boolean success;
 
+    private Object data;
+
     private List<FailureReason> failureReasons;
 
     public PrescriptionActionResult(boolean success) {
         this.success = success;
+    }
+
+    public PrescriptionActionResult(boolean success, Object data) {
+        this.success = success;
+        this.data = data;
     }
 
     public PrescriptionActionResult(boolean success, List<FailureReason> failureReasons) {
@@ -32,6 +39,10 @@ public class PrescriptionActionResult {
 
     public static PrescriptionActionResult success() {
         return new PrescriptionActionResult(true);
+    }
+
+    public static PrescriptionActionResult success(Object data) {
+        return new PrescriptionActionResult(true, data);
     }
 
 }
