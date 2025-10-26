@@ -2,7 +2,7 @@ package com.sanofi.pharma.controller;
 
 import com.sanofi.pharma.dto.request.PrescriptionSubmitRequest;
 import com.sanofi.pharma.dto.vo.PharmaResponse;
-import com.sanofi.pharma.dto.vo.PrescriptionActionResult;
+import com.sanofi.pharma.dto.vo.PrescriptionProcessResult;
 import com.sanofi.pharma.service.PrescriptionProcessService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -26,7 +26,7 @@ public class PrescriptionController {
      */
     @PostMapping("submit")
     public PharmaResponse<?> submit(@Valid @RequestBody PrescriptionSubmitRequest request) {
-        PrescriptionActionResult result = prescriptionProcessService.submit(request);
+        PrescriptionProcessResult result = prescriptionProcessService.submit(request);
         if (result.isSuccess()) {
             return PharmaResponse.ok(result.getData());
         } else {
@@ -39,7 +39,7 @@ public class PrescriptionController {
      */
     @GetMapping("/{prescriptionId}/fulfill")
     public PharmaResponse<?> fulfill(@PathVariable @NotNull(message = "prescriptionId can't be null") Long prescriptionId) {
-        PrescriptionActionResult result = prescriptionProcessService.fulfill(prescriptionId);
+        PrescriptionProcessResult result = prescriptionProcessService.fulfill(prescriptionId);
         return PharmaResponse.ok(result);
     }
 
@@ -48,7 +48,7 @@ public class PrescriptionController {
      */
     @GetMapping("/{prescriptionId}/submit")
     public PharmaResponse<?> submitById(@PathVariable @NotNull(message = "prescriptionId can't be null") Long prescriptionId) {
-        PrescriptionActionResult result = prescriptionProcessService.submitById(prescriptionId);
+        PrescriptionProcessResult result = prescriptionProcessService.submitById(prescriptionId);
         return PharmaResponse.ok(result);
     }
 }

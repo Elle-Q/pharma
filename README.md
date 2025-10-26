@@ -22,7 +22,7 @@ Pharmaceutical supply chain and prescription fulfillment systems to manage pharm
 ### Database Schema
 > sql path: /resources/SQL
 - audit_log
-- pharmacy_drug_allocation
+- contract (will be renamed to pharmacy_drug_allocation) 
 - drug
 - manufacturer
 - patient

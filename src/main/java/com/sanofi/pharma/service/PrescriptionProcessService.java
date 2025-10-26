@@ -3,7 +3,7 @@ package com.sanofi.pharma.service;
 import com.sanofi.pharma.dto.common.PrescriptionDetail;
 import com.sanofi.pharma.dto.request.PrescriptionItemRequest;
 import com.sanofi.pharma.dto.request.PrescriptionSubmitRequest;
-import com.sanofi.pharma.dto.vo.PrescriptionActionResult;
+import com.sanofi.pharma.dto.vo.PrescriptionProcessResult;
 import com.sanofi.pharma.entity.Prescription;
 import com.sanofi.pharma.entity.PrescriptionItem;
 import com.sanofi.pharma.enums.FailureCode;
@@ -44,7 +44,7 @@ public class PrescriptionProcessService {
     /**
      * Submit a prescription for a patient at a specific pharmacy
      */
-    public PrescriptionActionResult submit(PrescriptionSubmitRequest request) {
+    public PrescriptionProcessResult submit(PrescriptionSubmitRequest request) {
         //1. build PrescriptionDetail
         PrescriptionDetail prescriptionDetail = buildPrescriptionDetail(request);
         return doSubmit(prescriptionDetail);
@@ -53,7 +53,7 @@ public class PrescriptionProcessService {
     /**
      * Submit a prescription by prescriptionId
      */
-    public PrescriptionActionResult submitById(Long prescriptionId) {
+    public PrescriptionProcessResult submitById(Long prescriptionId) {
         //1. get PrescriptionDetail
         PrescriptionDetail prescriptionDetail = getPrescriptionDetail(prescriptionId);
         return doSubmit(prescriptionDetail);
@@ -63,7 +63,7 @@ public class PrescriptionProcessService {
      * Fulfill a prescription
      */
 
-    public PrescriptionActionResult fulfill(Long prescriptionId) {
+    public PrescriptionProcessResult fulfill(Long prescriptionId) {
         log.info("start to fulfill prescription: {}", prescriptionId);
 
         int retryCount = 0;
@@ -79,19 +79,19 @@ public class PrescriptionProcessService {
                 //3. if has failures -> audit log -> return
                 if (context.hasFailures()) {
                     auditLogService.createOnFail(OperationCode.PRESCRIPTION_FULFILL_FAIL, prescriptionDetail, validationResult.getFailureReasons());
-                    return PrescriptionActionResult.fail(validationResult.getFailureReasons());
+                    return PrescriptionProcessResult.fail(validationResult.getFailureReasons());
                 }
 
                 //4. fulfill
                 prescriptionService.fulfillPrescription(prescriptionDetail, context);
                 if (context.hasFailures()) {
                     auditLogService.createOnFail(OperationCode.PRESCRIPTION_FULFILL_FAIL, prescriptionDetail, validationResult.getFailureReasons());
-                    return PrescriptionActionResult.fail(validationResult.getFailureReasons());
+                    return PrescriptionProcessResult.fail(validationResult.getFailureReasons());
                 }
 
                 //5. audit log
                 auditLogService.createOnSuccess(OperationCode.PRESCRIPTION_FULFILL_SUCCESS, prescriptionDetail);
-                return PrescriptionActionResult.success();
+                return PrescriptionProcessResult.success();
 
             } catch (OptimisticLockException e) {
                 log.warn("Optimistic Lock conflict with Prescription {}, retry {}/{}", prescriptionId, retryCount, MAX_RETRY);
@@ -115,7 +115,7 @@ public class PrescriptionProcessService {
     }
 
 
-    private PrescriptionActionResult doSubmit(PrescriptionDetail prescriptionDetail) {
+    private PrescriptionProcessResult doSubmit(PrescriptionDetail prescriptionDetail) {
         log.info("start to submit prescription...");
         ValidationContext context = new ValidationContext(OperationType.SUBMIT);
         try {
@@ -125,7 +125,7 @@ public class PrescriptionProcessService {
             //2. if has failures -> audit log -> return
             if (context.hasFailures()) {
                 auditLogService.createOnFail(OperationCode.PRESCRIPTION_SUBMIT_FAIL, prescriptionDetail, validationResult.getFailureReasons());
-                return PrescriptionActionResult.fail(validationResult.getFailureReasons());
+                return PrescriptionProcessResult.fail(validationResult.getFailureReasons());
             }
 
             //3. submit
@@ -134,7 +134,7 @@ public class PrescriptionProcessService {
             //audit log
             log.info("success to submit prescription {}. save audit log", prescriptionDetail.getPrescription().getNumber());
             auditLogService.createOnSuccess(OperationCode.PRESCRIPTION_SUBMIT_SUCCESS, prescriptionDetail);
-            return PrescriptionActionResult.success(prescriptionDetail.getPrescription().getId());
+            return PrescriptionProcessResult.success(prescriptionDetail.getPrescription().getId());
 
         } catch (Exception e) {
             //system error
@@ -143,16 +143,16 @@ public class PrescriptionProcessService {
             log.info("fail to submit prescription due to {}", e.getMessage());
             e.printStackTrace();
         }
-        return PrescriptionActionResult.fail(context.getValidationResult().getFailureReasons());
+        return PrescriptionProcessResult.fail(context.getValidationResult().getFailureReasons());
     }
 
 
-    private PrescriptionActionResult fulfillErrorReturn(FailureCode failureCode,
-                                                        PrescriptionDetail prescriptionDetail,
-                                                        String message, ValidationContext context) {
+    private PrescriptionProcessResult fulfillErrorReturn(FailureCode failureCode,
+                                                         PrescriptionDetail prescriptionDetail,
+                                                         String message, ValidationContext context) {
         auditLogService.createOnFail(OperationCode.PRESCRIPTION_FULFILL_FAIL, prescriptionDetail, context.getValidationResult().getFailureReasons());
         context.addFailureReason(FailureReason.fail0(failureCode, message));
-        return PrescriptionActionResult.fail(context.getValidationResult().getFailureReasons());
+        return PrescriptionProcessResult.fail(context.getValidationResult().getFailureReasons());
     }
 
 

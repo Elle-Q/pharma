@@ -554,7 +554,7 @@ Caused by: org.apache.ibatis.executor.ExecutorException: No setter found for the
 2025-10-26T14:10:24.055+08:00  INFO 28316 --- [pharma] [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
 2025-10-26T14:10:27.211+08:00 ERROR 28316 --- [pharma] [http-nio-8080-exec-1] c.s.p.exception.GlobalExceptionHandler   : system error: 
 
-org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class com.sanofi.pharma.dto.vo.PrescriptionActionResult]
+org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class com.sanofi.pharma.dto.vo.PrescriptionProcessResult]
 	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:489) ~[spring-web-6.1.12.jar:6.1.12]
 	at org.springframework.http.converter.AbstractGenericHttpMessageConverter.write(AbstractGenericHttpMessageConverter.java:114) ~[spring-web-6.1.12.jar:6.1.12]
 	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:297) ~[spring-webmvc-6.1.12.jar:6.1.12]
@@ -604,7 +604,7 @@ org.springframework.http.converter.HttpMessageConversionException: Type definiti
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.28.jar:10.1.28]
 	at java.base/java.lang.Thread.run(Thread.java:842) ~[na:na]
-Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class com.sanofi.pharma.dto.vo.PrescriptionActionResult and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.sanofi.pharma.dto.vo.PharmaResponse["data"])
+Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class com.sanofi.pharma.dto.vo.PrescriptionProcessResult and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.sanofi.pharma.dto.vo.PharmaResponse["data"])
 	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:77) ~[jackson-databind-2.17.2.jar:2.17.2]
 	at com.fasterxml.jackson.databind.SerializerProvider.reportBadDefinition(SerializerProvider.java:1330) ~[jackson-databind-2.17.2.jar:2.17.2]
 	at com.fasterxml.jackson.databind.DatabindContext.reportBadDefinition(DatabindContext.java:414) ~[jackson-databind-2.17.2.jar:2.17.2]
@@ -620,7 +620,7 @@ Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No ser
 	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:483) ~[spring-web-6.1.12.jar:6.1.12]
 	... 48 common frames omitted
 
-2025-10-26T14:10:27.217+08:00  WARN 28316 --- [pharma] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class com.sanofi.pharma.dto.vo.PrescriptionActionResult]]
+2025-10-26T14:10:27.217+08:00  WARN 28316 --- [pharma] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class com.sanofi.pharma.dto.vo.PrescriptionProcessResult]]
 2025-10-26T14:11:02.264+08:00  INFO 28316 --- [pharma] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-10-26T14:11:02.267+08:00  INFO 28316 --- [pharma] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
 2025-10-26T14:11:18.511+08:00  INFO 32088 --- [pharma] [restartedMain] com.sanofi.pharma.PharmaApplication      : Starting PharmaApplication using Java 17.0.12 with PID 32088 (D:\java_workspace\pharma\build\classes\java\main started by quxiaoyu in D:\java_workspace\pharma)
@@ -2122,3 +2122,27 @@ Caused by: java.sql.SQLSyntaxErrorException: Unknown database 'pharma_dev'
 2025-10-26T23:18:07.137+08:00  INFO 5352 --- [pharma] [http-nio-8080-exec-8] c.s.p.s.PrescriptionProcessService       : success to submit prescription XXXX202510250003. save audit log
 2025-10-26T23:20:28.233+08:00  INFO 5352 --- [pharma] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-10-26T23:20:28.238+08:00  INFO 5352 --- [pharma] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-10-26T23:20:33.192+08:00  INFO 724 --- [pharma] [restartedMain] com.sanofi.pharma.PharmaApplication      : Starting PharmaApplication using Java 17.0.12 with PID 724 (D:\java_workspace\pharma\build\classes\java\main started by quxiaoyu in D:\java_workspace\pharma)
+2025-10-26T23:20:33.194+08:00  INFO 724 --- [pharma] [restartedMain] com.sanofi.pharma.PharmaApplication      : The following 1 profile is active: "dev"
+2025-10-26T23:20:33.223+08:00  INFO 724 --- [pharma] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-10-26T23:20:33.223+08:00  INFO 724 --- [pharma] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-10-26T23:20:33.722+08:00  INFO 724 --- [pharma] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-26T23:20:33.725+08:00  INFO 724 --- [pharma] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-26T23:20:33.743+08:00  INFO 724 --- [pharma] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+2025-10-26T23:20:34.180+08:00  INFO 724 --- [pharma] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-26T23:20:34.190+08:00  INFO 724 --- [pharma] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T23:20:34.190+08:00  INFO 724 --- [pharma] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2025-10-26T23:20:34.228+08:00  INFO 724 --- [pharma] [restartedMain] o.a.c.c.C.[.[localhost].[/pharma]        : Initializing Spring embedded WebApplicationContext
+2025-10-26T23:20:34.230+08:00  INFO 724 --- [pharma] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1006 ms
+2025-10-26T23:20:34.951+08:00  INFO 724 --- [pharma] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-26T23:20:34.977+08:00  INFO 724 --- [pharma] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/pharma'
+2025-10-26T23:20:34.984+08:00  INFO 724 --- [pharma] [restartedMain] com.sanofi.pharma.PharmaApplication      : Started PharmaApplication in 2.143 seconds (process running for 2.641)
+2025-10-26T23:21:00.227+08:00  INFO 724 --- [pharma] [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/pharma]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-26T23:21:00.227+08:00  INFO 724 --- [pharma] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-10-26T23:21:00.230+08:00  INFO 724 --- [pharma] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-10-26T23:21:00.411+08:00  INFO 724 --- [pharma] [http-nio-8080-exec-1] c.s.p.s.PrescriptionProcessService       : start to submit prescription...
+2025-10-26T23:21:00.428+08:00  INFO 724 --- [pharma] [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-26T23:21:00.801+08:00  INFO 724 --- [pharma] [http-nio-8080-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@27e8ea64
+2025-10-26T23:21:00.802+08:00  INFO 724 --- [pharma] [http-nio-8080-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-26T23:21:00.932+08:00  INFO 724 --- [pharma] [http-nio-8080-exec-1] c.s.p.s.PrescriptionProcessService       : success to submit prescription XXXX202510250004. save audit log
+2025-10-26T23:21:27.921+08:00  INFO 724 --- [pharma] [http-nio-8080-exec-3] c.s.p.s.PrescriptionProcessService       : start to fulfill prescription: 11

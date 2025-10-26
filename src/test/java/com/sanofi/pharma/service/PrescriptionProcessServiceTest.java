@@ -3,7 +3,7 @@ package com.sanofi.pharma.service;
 import com.sanofi.pharma.dto.common.PrescriptionDetail;
 import com.sanofi.pharma.dto.request.PrescriptionItemRequest;
 import com.sanofi.pharma.dto.request.PrescriptionSubmitRequest;
-import com.sanofi.pharma.dto.vo.PrescriptionActionResult;
+import com.sanofi.pharma.dto.vo.PrescriptionProcessResult;
 import com.sanofi.pharma.enums.FailureCode;
 import com.sanofi.pharma.enums.OperationCode;
 import com.sanofi.pharma.dto.common.FailureReason;
@@ -59,7 +59,7 @@ class PrescriptionProcessServiceTest {
                     return validationResult;
                 });
 
-        PrescriptionActionResult result = prescriptionProcessService.submit(request);
+        PrescriptionProcessResult result = prescriptionProcessService.submit(request);
 
         assertThat(result.isSuccess()).isFalse();
         verify(prescriptionService, never()).submitPrescription(any());
