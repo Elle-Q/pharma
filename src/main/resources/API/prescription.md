@@ -80,7 +80,7 @@ Prescription
 
 * status**`Checked`**
 * developer **`Elle`**
-* method **`POST`**
+* method **`GET`**
 * address`/pharma/prescriptions/{id}/fulfill`
 
 > request sample

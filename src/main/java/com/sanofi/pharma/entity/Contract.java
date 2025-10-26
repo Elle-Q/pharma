@@ -5,6 +5,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
+ * //TODO: Rename Contract to a proper name (pharmacy_drug_allocation)
  * TABLE: contract
  * Pharmacy and drug contracts
  * Pharmacies can only dispense specific drugs they are contracted for.

@@ -1919,3 +1919,32 @@ Caused by: com.fasterxml.jackson.databind.exc.InvalidDefinitionException: Cannot
 2025-10-26T21:19:19.904+08:00  INFO 31516 --- [pharma] [restartedMain] com.sanofi.pharma.PharmaApplication      : Started PharmaApplication in 0.455 seconds (process running for 7200.059)
 2025-10-26T21:19:19.904+08:00  INFO 31516 --- [pharma] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
 2025-10-26T21:19:47.660+08:00  INFO 31516 --- [pharma] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 75 class path changes (0 additions, 75 deletions, 0 modifications)
+2025-10-26T21:19:53.447+08:00  INFO 31516 --- [pharma] [restartedMain] com.sanofi.pharma.PharmaApplication      : Starting PharmaApplication using Java 17.0.12 with PID 31516 (D:\java_workspace\pharma\build\classes\java\main started by quxiaoyu in D:\java_workspace\pharma)
+2025-10-26T21:19:53.448+08:00  INFO 31516 --- [pharma] [restartedMain] com.sanofi.pharma.PharmaApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-10-26T21:19:53.620+08:00  INFO 31516 --- [pharma] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-26T21:19:53.620+08:00  INFO 31516 --- [pharma] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-26T21:19:53.622+08:00  INFO 31516 --- [pharma] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 Redis repository interfaces.
+2025-10-26T21:19:53.683+08:00  INFO 31516 --- [pharma] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-26T21:19:53.683+08:00  INFO 31516 --- [pharma] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T21:19:53.683+08:00  INFO 31516 --- [pharma] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2025-10-26T21:19:53.693+08:00  INFO 31516 --- [pharma] [restartedMain] o.a.c.c.C.[.[localhost].[/pharma]        : Initializing Spring embedded WebApplicationContext
+2025-10-26T21:19:53.695+08:00  INFO 31516 --- [pharma] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 245 ms
+2025-10-26T21:19:53.874+08:00  INFO 31516 --- [pharma] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-26T21:19:53.882+08:00  INFO 31516 --- [pharma] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/pharma'
+2025-10-26T21:19:53.884+08:00  INFO 31516 --- [pharma] [restartedMain] com.sanofi.pharma.PharmaApplication      : Started PharmaApplication in 0.457 seconds (process running for 7234.035)
+2025-10-26T21:19:53.885+08:00  INFO 31516 --- [pharma] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-10-26T21:47:55.490+08:00  INFO 16756 --- [pharma] [restartedMain] com.sanofi.pharma.PharmaApplication      : Starting PharmaApplication using Java 17.0.12 with PID 16756 (D:\java_workspace\pharma\build\classes\java\main started by quxiaoyu in D:\java_workspace\pharma)
+2025-10-26T21:47:55.492+08:00  INFO 16756 --- [pharma] [restartedMain] com.sanofi.pharma.PharmaApplication      : The following 1 profile is active: "dev"
+2025-10-26T21:47:55.530+08:00  INFO 16756 --- [pharma] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-10-26T21:47:55.530+08:00  INFO 16756 --- [pharma] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-10-26T21:47:56.105+08:00  INFO 16756 --- [pharma] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2025-10-26T21:47:56.107+08:00  INFO 16756 --- [pharma] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-10-26T21:47:56.129+08:00  INFO 16756 --- [pharma] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+2025-10-26T21:47:56.616+08:00  INFO 16756 --- [pharma] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-26T21:47:56.630+08:00  INFO 16756 --- [pharma] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-26T21:47:56.631+08:00  INFO 16756 --- [pharma] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.28]
+2025-10-26T21:47:56.671+08:00  INFO 16756 --- [pharma] [restartedMain] o.a.c.c.C.[.[localhost].[/pharma]        : Initializing Spring embedded WebApplicationContext
+2025-10-26T21:47:56.672+08:00  INFO 16756 --- [pharma] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1140 ms
+2025-10-26T21:47:57.518+08:00  INFO 16756 --- [pharma] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-26T21:47:57.547+08:00  INFO 16756 --- [pharma] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/pharma'
+2025-10-26T21:47:57.553+08:00  INFO 16756 --- [pharma] [restartedMain] com.sanofi.pharma.PharmaApplication      : Started PharmaApplication in 2.387 seconds (process running for 2.902)

@@ -8,7 +8,7 @@ Pharmacy
 
 * status**`Checked`**
 * developer **`Elle`**
-* method **`POST`**
+* method **`GET`**
 * address`/pharma/pharmacies/with-contracts`
 
 > response sample

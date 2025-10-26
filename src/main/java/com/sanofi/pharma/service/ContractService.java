@@ -16,6 +16,8 @@ import java.util.List;
 
 
 /**
+ * Contract will be renamed to a proper name
+ *
  * @author ELLE Q
  * @since 2025-10-24
  */
