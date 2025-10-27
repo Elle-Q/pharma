@@ -86,7 +86,7 @@ open build/reports/checkstyle/main.html
 ### Business Rule Assumptions
 1. **Authentication**: User authentication is handled by a separate module (all request are legal and valid)
 2. **Authorization**: Role-based access control is implemented for different user types
-   3  **Authorization**: Prescription authentication is handled by a separate module (all prescription are legal and valid)
+3. **Authorization**: Prescription authentication is handled by a separate module (all prescription are legal and valid)
 
 ### System Assumptions
 1. **Java Environment**: Java 17+ runtime is available on all deployment environments

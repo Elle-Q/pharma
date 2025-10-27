@@ -48,7 +48,6 @@ public class ValidatorChainBuilder {
         return buildChain(validators);
     }
 
-    @SuppressWarnings("unchecked")
     private <T> Validator<T> buildChain(List<Validator<?>> validators) {
         if (validators.isEmpty()) {
             return null;
@@ -59,7 +58,7 @@ public class ValidatorChainBuilder {
         //build chain by order
         Validator<T> head = (Validator<T>) validators.get(0);
         Validator<T> cur = head;
-        for (int i = 1; i < validators.size(); i++) {  // 从第二个开始
+        for (int i = 1; i < validators.size(); i++) {
             Validator<T> next = (Validator<T>) validators.get(i);
             cur.setNext(next);
             cur = next;

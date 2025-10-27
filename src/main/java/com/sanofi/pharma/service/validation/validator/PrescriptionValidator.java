@@ -45,10 +45,6 @@ public class PrescriptionValidator extends AbstractValidator<PrescriptionDetail>
             //check if prescription already exist -> true ? status check
             Prescription existPrescription = prescriptionMapper.findByNumber(prescription.getNumber());
 
-//            if (existPrescription != null && prescription.getId() == null) {
-//                prescription.setId(existPrescription.getId());
-//            }
-
             if (existPrescription != null && !existPrescription.canResubmit()) {
                 context.addFailureReason(FailureReason.fail(FailureCode.PRESCRIPTION_NOT_SUBMITTABLE, existPrescription));
             }
