@@ -23,7 +23,7 @@ public interface AuditLogMapper {
 
     @Select("""
         <script>
-            SELECT * FROM audit_log 
+            SELECT * FROM audit_log
             <where>
                 <if test="request.patientId != null and request.patientId != ''">
                     AND patient_id = #{request.patientId}
